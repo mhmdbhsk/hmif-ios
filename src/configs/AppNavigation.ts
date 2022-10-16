@@ -6,18 +6,22 @@ const AppNavigationLinks = [
   {
     link: '/community',
     label: 'Community',
+    disabled: true,
   },
   {
     link: '/events',
     label: 'Events',
+    disabled: true,
   },
   {
     link: '/virtual',
     label: 'Virtual',
+    disabled: true,
   },
   {
     link: '/information',
     label: 'Information',
+    disabled: true,
   },
 ];
 

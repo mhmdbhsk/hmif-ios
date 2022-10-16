@@ -1,8 +1,7 @@
 import { Jumbotron } from '@/components';
-import { useWindowSize } from '@/hooks/useMediaQuery';
-import { Paper, Stack, Text } from '@mantine/core';
+import { NextPageWithSeo } from '@/types/next-page-with-seo';
 
-function Home() {
+const Home: NextPageWithSeo = () => {
   return (
     <>
       <Jumbotron
@@ -17,6 +16,9 @@ function Home() {
       />
     </>
   );
-}
+};
+
+Home.title = 'Home';
+Home.pageTitle = 'Home';
 
 export default Home;

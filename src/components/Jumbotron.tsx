@@ -1,6 +1,64 @@
 import { useWindowSize } from '@/hooks/useMediaQuery';
-import { Paper, Stack, Text } from '@mantine/core';
+import { createStyles, Paper, Stack, Text } from '@mantine/core';
 import { ReactNode } from 'react';
+
+const useStyles = createStyles((theme) => ({
+  titleFont: {
+    fontSize: 88,
+    [`@media (max-width: ${theme.breakpoints.xl}px)`]: {
+      fontSize: 88,
+    },
+    [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
+      fontSize: 56,
+    },
+    [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+      fontSize: 42,
+    },
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      fontSize: 36,
+    },
+    [`@media (max-width: ${theme.breakpoints.xs}px)`]: {
+      fontSize: 24,
+    },
+  },
+
+  descriptionFont: {
+    fontSize: 22,
+    [`@media (max-width: ${theme.breakpoints.xl}px)`]: {
+      fontSize: 22,
+    },
+    [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
+      fontSize: 20,
+    },
+    [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+      fontSize: 16,
+    },
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      fontSize: 14,
+    },
+    [`@media (max-width: ${theme.breakpoints.xs}px)`]: {
+      fontSize: 14,
+    },
+  },
+  jumbotronPadding: {
+    padding: '50px 64px',
+    [`@media (max-width: ${theme.breakpoints.xl}px)`]: {
+      padding: '50px 64px',
+    },
+    [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
+      padding: '40px 48px',
+    },
+    [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+      padding: '30px 32px',
+    },
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      padding: '30px 32px',
+    },
+    [`@media (max-width: ${theme.breakpoints.xs}px)`]: {
+      padding: '30px 32px',
+    },
+  },
+}));
 
 type JumbotronProps = {
   title: string | ReactNode;
@@ -8,58 +66,36 @@ type JumbotronProps = {
 };
 
 const Jumbotron = ({ title, description }: JumbotronProps) => {
-  const { desktop, largeMobile, smallMobile, tablet } = useWindowSize();
-
+  const { largeMobile, smallMobile, tablet, extraSmallMobile } =
+    useWindowSize();
+  const { classes } = useStyles();
   return (
     <Paper
       radius={
-        desktop ? 64 : tablet ? 56 : largeMobile ? 40 : smallMobile ? 32 : 28
-      }
-      sx={{
-        padding: desktop
-          ? '50px 64px'
-          : tablet
-          ? '40px 48px'
-          : largeMobile
-          ? '30px 32px'
+        extraSmallMobile
+          ? 28
           : smallMobile
-          ? '30px 32px'
-          : '30px 32px',
+          ? 32
+          : largeMobile
+          ? 40
+          : tablet
+          ? 56
+          : 64
+      }
+      className={classes.jumbotronPadding}
+      sx={{
         background: '#DEDEFB',
       }}
     >
       <Stack spacing={16}>
         <Text
-          size={
-            desktop
-              ? 88
-              : tablet
-              ? 56
-              : largeMobile
-              ? 42
-              : smallMobile
-              ? 36
-              : 24
-          }
+          className={classes.titleFont}
           weight='bold'
           sx={{ lineHeight: '110%' }}
         >
           {title}
         </Text>
-        <Text
-          size={
-            desktop
-              ? 22
-              : tablet
-              ? 20
-              : largeMobile
-              ? 16
-              : smallMobile
-              ? 14
-              : 14
-          }
-          sx={{ lineHeight: '30px' }}
-        >
+        <Text className={classes.descriptionFont} sx={{ lineHeight: '30px' }}>
           {description}
         </Text>
       </Stack>

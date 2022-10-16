@@ -1,110 +1,135 @@
 import { IosLogo, KominfoLogo } from '@/assets';
+import SocialLinks from '@/configs/SocialLinks';
 import { useWindowSize } from '@/hooks/useMediaQuery';
 import useSharedStyles from '@/theme/shared-styles';
-import { Anchor, Divider, Group, Paper, Stack, Text } from '@mantine/core';
+import {
+  Anchor,
+  createStyles,
+  Divider,
+  Group,
+  Paper,
+  Stack,
+  Text,
+  useMantineColorScheme,
+} from '@mantine/core';
+
+const useStyles = createStyles((theme) => ({
+  paperMargin: {
+    margin: '80px 0',
+    [`@media (max-width: ${theme.breakpoints.xl}px)`]: {
+      margin: '80px 0',
+    },
+    [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
+      margin: '60px 0',
+    },
+    [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+      margin: '40px 0',
+    },
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      margin: '24px 0',
+    },
+    [`@media (max-width: ${theme.breakpoints.xs}px)`]: {
+      margin: '24px 0',
+    },
+  },
+  stackPadding: {
+    padding: '50px 64px',
+    [`@media (max-width: ${theme.breakpoints.xl}px)`]: {
+      padding: '50px 64px',
+    },
+    [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
+      padding: '40px 48px',
+    },
+    [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+      padding: '30px 32px',
+    },
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      padding: '30px 32px',
+    },
+    [`@media (max-width: ${theme.breakpoints.xs}px)`]: {
+      padding: '30px 32px',
+    },
+  },
+}));
 
 const Footer = () => {
-  const { classes, theme } = useSharedStyles();
-  const { desktop, largeMobile, smallMobile, tablet } = useWindowSize();
+  const { classes } = useStyles();
+  const { classes: sharedClasses } = useSharedStyles();
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
+  const { largeMobile, smallMobile, tablet, extraSmallMobile } =
+    useWindowSize();
 
   return (
     <Paper
       radius={
-        desktop ? 64 : tablet ? 56 : largeMobile ? 40 : smallMobile ? 32 : 28
+        extraSmallMobile
+          ? 24
+          : smallMobile
+          ? 32
+          : largeMobile
+          ? 40
+          : tablet
+          ? 56
+          : 64
       }
       withBorder
-      sx={{
-        margin: desktop
-          ? '80px 0'
-          : tablet
-          ? '60px 0'
-          : largeMobile
-          ? '40px 0'
-          : smallMobile
-          ? '24px 0'
-          : '24px 0',
-      }}
+      className={classes.paperMargin}
+      sx={(theme) => ({
+        backgroundColor: dark ? theme.colors.dark[6] : theme.colors.gray[0],
+        color: colorScheme === 'dark' ? 'white' : theme.colors.dark[8],
+        borderColor:
+          colorScheme === 'dark' ? theme.colors.gray[8] : theme.colors.gray[2],
+      })}
     >
       <Stack
         spacing={
-          desktop ? 44 : tablet ? 38 : largeMobile ? 34 : smallMobile ? 30 : 24
-        }
-        sx={{
-          padding: desktop
-            ? '50px 64px'
-            : tablet
-            ? '40px 48px'
-            : largeMobile
-            ? '30px 32px'
+          extraSmallMobile
+            ? 24
             : smallMobile
-            ? '30px 32px'
-            : '30px 32px',
-        }}
+            ? 30
+            : largeMobile
+            ? 34
+            : tablet
+            ? 38
+            : 44
+        }
+        className={classes.stackPadding}
       >
         <IosLogo />
 
-        <Text className={classes.regularFontResponsive}>
+        <Text className={sharedClasses.regularFontResponsive}>
           Informatics Ongoing Story adalah buletin daring yang menyediakan
           informasi seputar teknologi, informatika, dan Departemen Informatika
           Universitas Diponegoro kepada mahasiswa Informatika dan masyarakat
           umum.
         </Text>
         <Group>
-          <Anchor
-            href='#'
-            target='_blank'
-            className={classes.regularFontResponsive}
-          >
-            Instagram
-          </Anchor>
-          <Anchor
-            href='#'
-            target='_blank'
-            className={classes.regularFontResponsive}
-          >
-            Twitter
-          </Anchor>
-          <Anchor
-            href='#'
-            target='_blank'
-            className={classes.regularFontResponsive}
-          >
-            Facebook
-          </Anchor>
-          <Anchor
-            href='#'
-            target='_blank'
-            className={classes.regularFontResponsive}
-          >
-            YouTube
-          </Anchor>
-          <Anchor
-            href='#'
-            target='_blank'
-            className={classes.regularFontResponsive}
-          >
-            Github
-          </Anchor>
+          {SocialLinks.map((item) => (
+            <Anchor
+              key={item.name}
+              href={item.link}
+              target='_blank'
+              className={sharedClasses.regularFontResponsive}
+            >
+              {item.name}
+            </Anchor>
+          ))}
         </Group>
       </Stack>
 
-      <Divider />
+      <Divider
+        sx={(theme) => ({
+          borderColor:
+            colorScheme === 'dark'
+              ? theme.colors.gray[8]
+              : theme.colors.gray[2],
+        })}
+      />
 
-      <Group
-        sx={{
-          padding: desktop
-            ? '50px 64px'
-            : tablet
-            ? '40px 48px'
-            : largeMobile
-            ? '30px 32px'
-            : smallMobile
-            ? '30px 32px'
-            : '30px 32px',
-        }}
-      >
+      <Group className={classes.stackPadding}>
         <KominfoLogo />
-        <Text className={classes.regularFontResponsive}>
+        <Text className={sharedClasses.regularFontResponsive}>
           &copy; 2022 Kominfo Himpunan Mahasiswa Informatika Universitas
           Diponegoro
         </Text>

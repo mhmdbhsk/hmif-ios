@@ -1,21 +1,45 @@
 import {
   Anchor,
   Box,
-  Button,
   Grid,
-  Group,
   Image,
   Paper,
   Stack,
   Text,
+  useMantineColorScheme,
 } from '@mantine/core';
-import { IosLogo, WrapperArrowShape } from '@/assets';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { Jumbotron, Title } from '@/components';
 import useSharedStyles from '@/theme/shared-styles';
+import { NextPageWithSeo } from '@/types/next-page-with-seo';
+import Outline from '@/components/Outline';
+import { useWindowSize } from '@/hooks/useMediaQuery';
 
-function Home() {
+const informaticsOutline = [
+  {
+    title: 'Tentang Kami',
+    description: 'Departemen Informatika',
+    link: '#tentang-kami',
+  },
+  {
+    title: 'Fun Fact',
+    description: 'Apa sih yang unik?',
+    link: '#fun-fact',
+  },
+  {
+    title: 'Video Profil',
+    description: 'Kenal lebih dekat',
+    link: '#video-profil',
+  },
+];
+
+const Informatics: NextPageWithSeo = () => {
   const { classes: sharedClasses } = useSharedStyles();
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
+  const { largeMobile, smallMobile, tablet, extraSmallMobile } =
+    useWindowSize();
+
   return (
     <>
       <Jumbotron
@@ -35,115 +59,15 @@ function Home() {
           title='Informatika? Apaan Tuh!'
           subtitle='Mau tahu? Langsung aja cuss!'
         />
-        <Grid gutter='xl' className={sharedClasses.contentSpacing}>
-          <Grid.Col span={6}>
-            <Paper radius={24} sx={{ padding: 32, background: '#B7C8FF' }}>
-              <Group position='apart'>
-                <Stack spacing={0}>
-                  <Text size={24} weight='bold'>
-                    Tentang Kami
-                  </Text>
-                  <Text size={24}>Departemen Informatika</Text>
-                </Stack>
-
-                <Box
-                  sx={{
-                    position: 'relative',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <WrapperArrowShape />
-                  <FiArrowUpRight
-                    style={{
-                      position: 'absolute',
-                      margin: 'auto auto',
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                    }}
-                  />
-                </Box>
-              </Group>
-            </Paper>
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Paper radius={24} sx={{ padding: 32, background: '#FFEBCD' }}>
-              <Group position='apart'>
-                <Stack spacing={0}>
-                  <Text size={24} weight='bold'>
-                    Fun Fact
-                  </Text>
-                  <Text size={24}>Apasih yang unik?</Text>
-                </Stack>
-
-                <Box
-                  sx={{
-                    position: 'relative',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <WrapperArrowShape />
-                  <FiArrowUpRight
-                    style={{
-                      position: 'absolute',
-                      margin: 'auto auto',
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                    }}
-                  />
-                </Box>
-              </Group>
-            </Paper>
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Paper radius={24} sx={{ padding: 32, background: '#BFF0DB' }}>
-              <Group position='apart'>
-                <Stack spacing={0}>
-                  <Text size={24} weight='bold'>
-                    Video Profil
-                  </Text>
-                  <Text size={24}>Kenal lebih dekat</Text>
-                </Stack>
-
-                <Box
-                  sx={{
-                    position: 'relative',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <WrapperArrowShape />
-                  <FiArrowUpRight
-                    style={{
-                      position: 'absolute',
-                      margin: 'auto auto',
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                    }}
-                  />
-                </Box>
-              </Group>
-            </Paper>
-          </Grid.Col>
-        </Grid>
+        <Outline outline={informaticsOutline} />
       </Box>
 
       <Stack spacing={80}>
-        <Stack spacing={80}>
-          <Text size={54} weight={600}>
+        <Stack spacing={80} sx={{ padding: '0px 24px' }}>
+          <Text size={54} weight={600} id='tentang-kami'>
             Tentang Kami
           </Text>
-          <Box sx={{ width: '80%' }}>
+          <Box>
             <Text>
               Informatika/Ilmu Komputer adalah ilmu yang mempelajari baik
               tentang komputasi, perangkat keras (hardware) maupun perangkat
@@ -163,7 +87,19 @@ function Home() {
           </Box>
         </Stack>
 
-        <Stack spacing={80}>
+        <Image
+          radius='md'
+          src='/images/gedung-informatika.png'
+          alt='Gedung Informatika di Fakultas Sains dan Matematika'
+          caption='Gedung Informatika di Fakultas Sains dan Matematika'
+          styles={{
+            caption: {
+              textAlign: 'start',
+            },
+          }}
+        />
+
+        <Stack spacing={80} sx={{ padding: '0px 24px' }}>
           <Text size={54} weight={600}>
             Sejarah Informatika
           </Text>
@@ -192,29 +128,30 @@ function Home() {
               </Text>
             </Grid.Col>
           </Grid>
-
-          <Image
-            radius='md'
-            src='/images/gedung-informatika.png'
-            alt='Random unsplash image'
-            caption='Gedung Informatika di Fakultas Sains dan Matematika'
-            styles={{
-              caption: {
-                textAlign: 'start',
-              },
-            }}
-          />
         </Stack>
       </Stack>
 
-      <Paper radius={64} withBorder sx={{ height: 500, margin: '80px 0' }}>
+      <Paper
+        radius={64}
+        withBorder
+        sx={(theme) => ({
+          margin: '80px 0',
+          backgroundColor: dark ? theme.colors.dark[6] : theme.colors.gray[0],
+          color: colorScheme === 'dark' ? 'white' : theme.colors.dark[8],
+          borderColor:
+            colorScheme === 'dark'
+              ? theme.colors.gray[8]
+              : theme.colors.gray[2],
+        })}
+        id='video-profil'
+      >
         <Grid>
-          <Grid.Col span={6}>
+          <Grid.Col xl={6} md={12}>
             <Image
               radius='md'
               src='https://img.youtube.com/vi/3NRnR2bdZBI/sddefault.jpg'
               alt='Random unsplash image'
-              width={535}
+              width={'100%'}
               height={500}
               fit='cover'
               styles={{
@@ -229,20 +166,34 @@ function Home() {
           </Grid.Col>
 
           <Grid.Col
-            span={6}
+            xl={6}
+            md={12}
             sx={{
               display: 'flex',
               alignItems: 'center',
-              padding: '0 36px 0 0',
+              padding: '0 36px 64px',
             }}
           >
             <Stack spacing={44}>
               <Stack spacing={8}>
-                <Text size={64} weight={600}>
+                <Text
+                  size={
+                    extraSmallMobile
+                      ? 24
+                      : smallMobile
+                      ? 36
+                      : largeMobile
+                      ? 48
+                      : tablet
+                      ? 56
+                      : 64
+                  }
+                  weight={600}
+                >
                   Video Profil
                 </Text>
 
-                <Text>
+                <Text className={sharedClasses.regularFontResponsive}>
                   Penasaran banget sama Informatika Universitas Diponegoro?
                   <br /> Yuk, tonton video profil departemen Informatika
                   Universitas
@@ -251,11 +202,19 @@ function Home() {
                 </Text>
               </Stack>
               <Stack spacing={24}>
-                <Anchor href='#' target='_blank'>
+                <Anchor
+                  href='#'
+                  target='_blank'
+                  className={sharedClasses.regularFontResponsive}
+                >
                   Tonton selengkapnya di YouTube <FiArrowUpRight />
                 </Anchor>
 
-                <Anchor href='#' target='_blank'>
+                <Anchor
+                  href='#'
+                  target='_blank'
+                  className={sharedClasses.regularFontResponsive}
+                >
                   Lihat Channel <FiArrowUpRight />
                 </Anchor>
               </Stack>
@@ -265,6 +224,9 @@ function Home() {
       </Paper>
     </>
   );
-}
+};
 
-export default Home;
+Informatics.title = 'Informatics';
+Informatics.pageTitle = 'Informatics';
+
+export default Informatics;

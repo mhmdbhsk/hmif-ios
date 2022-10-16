@@ -1,11 +1,8 @@
 import { IosLogo } from '@/assets';
 import { useWindowSize } from '@/hooks/useMediaQuery';
 import { AppLinksDataDto } from '@/libs/dto';
-
 import {
   createStyles,
-  Menu,
-  Center,
   Header,
   Container,
   Group,
@@ -13,17 +10,20 @@ import {
   Burger,
   Text,
   Box,
+  useMantineColorScheme,
+  Anchor,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconChevronDown } from '@tabler/icons';
 import { useRouter } from 'next/router';
 import { FiArrowUpRight } from 'react-icons/fi';
+import ColorSchemeToggle from './ColorSchemeToggle';
 
 const useStyles = createStyles((theme) => ({
   inner: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    padding: 0,
   },
 
   links: {
@@ -49,21 +49,9 @@ const useStyles = createStyles((theme) => ({
     display: 'block',
     lineHeight: 1,
     padding: '8px 12px',
-    borderRadius: theme.radius.sm,
-    textDecoration: 'none',
-    color:
-      theme.colorScheme === 'dark'
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
+    borderRadius: theme.radius.xl,
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
-
-    '&:hover': {
-      backgroundColor:
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
-    },
   },
 
   linkLabel: {
@@ -76,62 +64,68 @@ interface HeaderActionProps {
 }
 
 export default function HeaderAction({ links }: HeaderActionProps) {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
   const router = useRouter();
   const [opened, { toggle }] = useDisclosure(false);
-  const { desktop, largeMobile, smallMobile, tablet } = useWindowSize();
-  const HEADER_HEIGHT = desktop
-    ? 100
-    : tablet
-    ? 95
-    : largeMobile
-    ? 90
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
+  const { largeMobile, smallMobile, tablet, extraSmallMobile } =
+    useWindowSize();
+
+  const HEADER_HEIGHT = extraSmallMobile
+    ? 75
     : smallMobile
     ? 85
-    : 75;
+    : largeMobile
+    ? 90
+    : tablet
+    ? 95
+    : 100;
 
-  const items = links.map((link) => {
-    const menuItems = link.links?.map((item) => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
-    ));
-
-    if (menuItems) {
-      return (
-        <Menu key={link.label} trigger='hover' exitTransitionDuration={0}>
-          <Menu.Target>
-            <a
-              href={link.link}
-              className={classes.link}
-              onClick={(event) => event.preventDefault()}
-            >
-              <Center>
-                <span className={classes.linkLabel}>{link.label}</span>
-                <IconChevronDown size={12} stroke={1.5} />
-              </Center>
-            </a>
-          </Menu.Target>
-          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
-        </Menu>
-      );
-    }
-
-    return (
-      <a
-        key={link.label}
-        href={link.link}
-        className={classes.link}
-        onClick={(event) => {
-          event.preventDefault();
+  const items = links.map((link) => (
+    <Anchor
+      key={link.label}
+      className={classes.link}
+      underline={false}
+      onClick={() => {
+        if (!link.disabled) {
           router.push(link.link);
-        }}
-      >
-        {link.label}
-      </a>
-    );
-  });
+        }
+      }}
+      sx={{
+        '&:hover': {
+          backgroundColor:
+            colorScheme === 'dark'
+              ? link.disabled
+                ? 'transparent'
+                : theme.colors.dark[9]
+              : 'transparent',
+        },
+        cursor: link.disabled ? 'not-allowed' : 'pointer',
+        color:
+          colorScheme === 'dark'
+            ? link.disabled
+              ? theme.colors.gray[7]
+              : theme.colors.gray[5]
+            : link.disabled
+            ? theme.colors.gray[6]
+            : theme.colors.gray[8],
+      }}
+    >
+      {link.label}
+    </Anchor>
+  ));
 
   return (
-    <Header height={HEADER_HEIGHT} sx={{ borderBottom: 0 }}>
+    <Header
+      height={HEADER_HEIGHT}
+      sx={(theme) => ({
+        borderBottom: 0,
+        padding: '0px 24px',
+        backgroundColor: dark ? theme.colors.dark[6] : theme.colors.gray[0],
+        color: colorScheme === 'dark' ? 'white' : theme.colors.dark[8],
+      })}
+    >
       <Container
         className={classes.inner}
         style={{ height: HEADER_HEIGHT }}
@@ -147,10 +141,11 @@ export default function HeaderAction({ links }: HeaderActionProps) {
           }}
         >
           <Burger
+            className={classes.burger}
             opened={opened}
             onClick={toggle}
-            className={classes.burger}
             size='sm'
+            color={colorScheme === 'dark' ? 'white' : theme.colors.dark[8]}
           />
           <Group
             onClick={() => router.push('/')}
@@ -161,15 +156,7 @@ export default function HeaderAction({ links }: HeaderActionProps) {
           >
             <Box
               sx={{
-                display: desktop
-                  ? 'flex'
-                  : tablet
-                  ? 'flex'
-                  : largeMobile
-                  ? 'flex'
-                  : smallMobile
-                  ? 'none'
-                  : 'none',
+                display: extraSmallMobile ? 'none' : 'flex',
               }}
             >
               <IosLogo />
@@ -178,19 +165,19 @@ export default function HeaderAction({ links }: HeaderActionProps) {
             <Box>
               <Text
                 size={
-                  desktop
-                    ? 16
-                    : tablet
-                    ? 14
-                    : largeMobile
+                  extraSmallMobile
                     ? 14
                     : smallMobile
                     ? 14
-                    : 14
+                    : largeMobile
+                    ? 14
+                    : tablet
+                    ? 14
+                    : 16
                 }
                 weight={600}
               >
-                Informatics Ongoing Story
+                {extraSmallMobile ? 'IOS' : 'Informatics Ongoing Story'}
               </Text>
             </Box>
           </Group>
@@ -200,20 +187,30 @@ export default function HeaderAction({ links }: HeaderActionProps) {
           {items}
         </Group>
 
-        <Button
-          className={classes.returnButton}
-          radius={'xl'}
-          sx={{
-            background: '#FFEBCD',
-            color: '#000',
-            ':hover': {
-              background: '#D4C4AB',
-            },
-          }}
-          rightIcon={<FiArrowUpRight />}
-        >
-          Return to old version
-        </Button>
+        <Group>
+          <Box
+            sx={{
+              display: largeMobile ? 'none' : 'flex',
+            }}
+          >
+            <ColorSchemeToggle />
+          </Box>
+
+          <Button
+            className={classes.returnButton}
+            radius={'xl'}
+            sx={{
+              background: '#FFEBCD',
+              color: '#000',
+              ':hover': {
+                background: '#D4C4AB',
+              },
+            }}
+            rightIcon={<FiArrowUpRight />}
+          >
+            Return to old version
+          </Button>
+        </Group>
       </Container>
     </Header>
   );

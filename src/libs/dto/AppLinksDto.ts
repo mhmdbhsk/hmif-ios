@@ -1,6 +1,7 @@
 export interface AppLinksDataDto {
   link: string;
   label: string;
+  disabled?: boolean;
   links?: AppDataItemDto[];
 }
 
