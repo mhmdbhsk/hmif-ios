@@ -8,7 +8,8 @@ import {
 } from '@mantine/core';
 import { ReactNode } from 'react';
 import CustomSeo from './CustomSeo';
-import PageTransition from './PageTransition';
+import PageTransition from './Motion/PageTransition';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -17,6 +18,12 @@ type RootLayoutProps = {
 
 const RootLayout = ({ children, pageTitle }: RootLayoutProps) => {
   const { colorScheme } = useMantineColorScheme();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
     <Box
@@ -29,10 +36,11 @@ const RootLayout = ({ children, pageTitle }: RootLayoutProps) => {
       <CustomSeo title={pageTitle} />
 
       <PageTransition>
+        <motion.div className='progress-bar' style={{ scaleX }} />
         <Container
           size={1200}
           sx={{
-            padding: '0px 24px 80px',
+            padding: '0px 24px 40px',
           }}
         >
           <Header links={AppNavigationLinks} />

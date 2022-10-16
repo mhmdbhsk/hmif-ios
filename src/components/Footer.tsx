@@ -15,21 +15,21 @@ import {
 
 const useStyles = createStyles((theme) => ({
   paperMargin: {
-    margin: '80px 0',
+    margin: '80px 0 0',
     [`@media (max-width: ${theme.breakpoints.xl}px)`]: {
-      margin: '80px 0',
+      margin: '80px 0 0',
     },
     [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
-      margin: '60px 0',
+      margin: '60px 0 0',
     },
     [`@media (max-width: ${theme.breakpoints.md}px)`]: {
-      margin: '40px 0',
+      margin: '40px 0 0',
     },
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      margin: '24px 0',
+      margin: '24px 0 0',
     },
     [`@media (max-width: ${theme.breakpoints.xs}px)`]: {
-      margin: '24px 0',
+      margin: '24px 0 0',
     },
   },
   stackPadding: {

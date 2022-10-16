@@ -198,6 +198,7 @@ export default function HeaderAction({ links }: HeaderActionProps) {
 
           <Button
             className={classes.returnButton}
+            onClick={() => router.push('https://hmif-undip.com/ios/')}
             radius={'xl'}
             sx={{
               background: '#FFEBCD',
