@@ -19,8 +19,8 @@ const Outline = ({ outline }: OutlineProps) => {
     <Grid
       gutter='xl'
       justify='space-between'
-      grow={true}
       className={sharedClasses.contentSpacing}
+      sx={{ margin: 'auto -12' }}
     >
       {outline.map((item) => (
         <Grid.Col xl={6} md={12} key={item.title}>

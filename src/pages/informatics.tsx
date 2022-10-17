@@ -68,7 +68,7 @@ const Informatics: NextPageWithSeo = () => {
             Tentang Kami
           </Text>
           <Box>
-            <Text>
+            <Text align='justify' sx={{ textJustify: 'inter-character' }}>
               Informatika/Ilmu Komputer adalah ilmu yang mempelajari baik
               tentang komputasi, perangkat keras (hardware) maupun perangkat
               lunak (software). Ilmu komputer mencakup beragam topik yang
@@ -94,6 +94,7 @@ const Informatics: NextPageWithSeo = () => {
           caption='Gedung Informatika di Fakultas Sains dan Matematika'
           styles={{
             caption: {
+              padding: '0 24px',
               textAlign: 'start',
             },
           }}
@@ -104,7 +105,7 @@ const Informatics: NextPageWithSeo = () => {
             Sejarah Informatika
           </Text>
           <Grid gutter='xl'>
-            <Grid.Col span={6}>
+            <Grid.Col xl={6} md={12}>
               <Text align='justify' sx={{ textJustify: 'inter-character' }}>
                 Pada tahun 1994 di Jurusan Matematika Universitas Diponegoro
                 Semarang mulai memberlakukan kurikulum yang lebih mengarah pada
@@ -115,7 +116,7 @@ const Informatics: NextPageWithSeo = () => {
                 Terapan, Statistik, dan Ilmu Komputer.
               </Text>
             </Grid.Col>
-            <Grid.Col span={6}>
+            <Grid.Col xl={6} md={12}>
               <Text align='justify' sx={{ textJustify: 'inter-character' }}>
                 Pada tahun 2004, berdasarkan surat Direktorat Jenderal
                 Pendidikan Tinggi Nomor 1365/D/T/2004 tertanggal 13 April 2004
@@ -194,10 +195,8 @@ const Informatics: NextPageWithSeo = () => {
                 </Text>
 
                 <Text className={sharedClasses.regularFontResponsive}>
-                  Penasaran banget sama Informatika Universitas Diponegoro?
-                  <br /> Yuk, tonton video profil departemen Informatika
-                  Universitas
-                  <br />
+                  Penasaran banget sama Informatika Universitas Diponegoro? Yuk,
+                  tonton video profil departemen Informatika Universitas
                   Diponegoro yang keren abis!
                 </Text>
               </Stack>

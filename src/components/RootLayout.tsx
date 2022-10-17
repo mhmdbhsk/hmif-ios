@@ -1,11 +1,6 @@
 import { Header, Footer } from '@/components';
 import AppNavigationLinks from '@/configs/AppNavigation';
-import {
-  Box,
-  Container,
-  useMantineColorScheme,
-  useMantineTheme,
-} from '@mantine/core';
+import { Box, Container, useMantineColorScheme } from '@mantine/core';
 import { ReactNode } from 'react';
 import CustomSeo from './CustomSeo';
 import PageTransition from './Motion/PageTransition';
@@ -35,19 +30,17 @@ const RootLayout = ({ children, pageTitle }: RootLayoutProps) => {
     >
       <CustomSeo title={pageTitle} />
 
-      <PageTransition>
-        <motion.div className='progress-bar' style={{ scaleX }} />
-        <Container
-          size={1200}
-          sx={{
-            padding: '0px 24px 40px',
-          }}
-        >
-          <Header links={AppNavigationLinks} />
-          {children}
-          <Footer />
-        </Container>
-      </PageTransition>
+      <motion.div style={{ scaleX }} />
+      <Container
+        size={1200}
+        sx={{
+          padding: '0px 24px 40px',
+        }}
+      >
+        <Header links={AppNavigationLinks} />
+        <PageTransition>{children}</PageTransition>
+        <Footer />
+      </Container>
     </Box>
   );
 };
