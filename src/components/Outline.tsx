@@ -1,5 +1,5 @@
 import useSharedStyles from '@/theme/shared-styles';
-import { Grid } from '@mantine/core';
+import { Box, Grid } from '@mantine/core';
 import OutlineCard from './OutlineCard';
 
 type OutlineProps = {
@@ -16,18 +16,15 @@ const Outline = ({ outline }: OutlineProps) => {
   const { classes: sharedClasses } = useSharedStyles();
 
   return (
-    <Grid
-      gutter='xl'
-      justify='space-between'
-      className={sharedClasses.contentSpacing}
-      sx={{ margin: 'auto -12' }}
-    >
-      {outline.map((item) => (
-        <Grid.Col xl={6} md={12} key={item.title}>
-          <OutlineCard {...item} />
-        </Grid.Col>
-      ))}
-    </Grid>
+    <Box className={sharedClasses.contentSpacing}>
+      <Grid gutter='xl' justify='space-between' sx={{ margin: -12 }}>
+        {outline.map((item) => (
+          <Grid.Col xl={6} md={12} key={item.title}>
+            <OutlineCard {...item} />
+          </Grid.Col>
+        ))}
+      </Grid>
+    </Box>
   );
 };
 

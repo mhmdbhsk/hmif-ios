@@ -40,7 +40,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   returnButton: {
-    [theme.fn.smallerThan('lg')]: {
+    [theme.fn.smallerThan(1080)]: {
       display: 'none',
     },
   },
@@ -148,21 +148,26 @@ export default function HeaderAction({ links }: HeaderActionProps) {
             color={colorScheme === 'dark' ? 'white' : theme.colors.dark[8]}
           />
           <Group
+            spacing={0}
             onClick={() => router.push('/')}
             sx={{
               display: 'flex',
               flexGrow: 1,
+              justifyContent: largeMobile ? 'end' : 'center',
             }}
           >
             <Box
               sx={{
-                display: extraSmallMobile ? 'none' : 'flex',
+                display: 'flex',
+                alignItems: 'center',
               }}
             >
               <IosLogo />
             </Box>
 
-            <Box>
+            <Box
+              sx={{ marginLeft: 16, display: largeMobile ? 'none' : 'flex' }}
+            >
               <Text
                 size={
                   extraSmallMobile
@@ -177,7 +182,7 @@ export default function HeaderAction({ links }: HeaderActionProps) {
                 }
                 weight={600}
               >
-                {extraSmallMobile ? 'IOS' : 'Informatics Ongoing Story'}
+                Informatics Ongoing Story
               </Text>
             </Box>
           </Group>

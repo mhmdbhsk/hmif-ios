@@ -95,9 +95,7 @@ const Jumbotron = ({ title, description }: JumbotronProps) => {
         >
           {title}
         </Text>
-        <Text className={classes.descriptionFont} sx={{ lineHeight: '30px' }}>
-          {description}
-        </Text>
+        <Text className={classes.descriptionFont}>{description}</Text>
       </Stack>
     </Paper>
   );

@@ -101,34 +101,43 @@ const OutlineCard = ({ title, description, link, color }: OutlineCardProps) => {
 
           <Box
             sx={{
-              position: 'relative',
               display: 'flex',
-              justifyContent: 'center',
+              flexGrow: 1,
+              justifyContent: 'end',
               alignItems: 'center',
             }}
           >
-            <motion.div variants={shapeMotion}>
-              <Box
-                sx={{
-                  position: 'relative',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <WrapperArrowShape />
-              </Box>
-            </motion.div>
-            <FiArrowUpRight
-              style={{
-                position: 'absolute',
-                margin: 'auto auto',
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0,
+            <Box
+              sx={{
+                position: 'relative',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
-            />
+            >
+              <motion.div variants={shapeMotion}>
+                <Box
+                  sx={{
+                    position: 'relative',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <WrapperArrowShape />
+                </Box>
+              </motion.div>
+              <FiArrowUpRight
+                style={{
+                  position: 'absolute',
+                  margin: 'auto auto',
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                }}
+              />
+            </Box>
           </Box>
         </Group>
       </Paper>
