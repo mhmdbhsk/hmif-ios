@@ -6,7 +6,6 @@ const AppNavigationLinks = [
   {
     link: '/community',
     label: 'Community',
-    disabled: true,
   },
   {
     link: '/events',

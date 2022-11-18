@@ -1,3 +1,4 @@
+import useColorScheme from '@/hooks/useColorScheme';
 import useSharedStyles from '@/theme/shared-styles';
 import {
   Anchor,
@@ -67,8 +68,7 @@ type CardProps = BaseProps & ConditionalProps;
 const Card = ({ variant, id, content }: CardProps) => {
   const { classes } = useStyles();
   const { classes: sharedClasses } = useSharedStyles();
-  const { colorScheme } = useMantineColorScheme();
-  const dark = colorScheme === 'dark';
+  const isDark = useColorScheme();
 
   const cardRender = () => {
     switch (variant) {
@@ -145,10 +145,9 @@ const Card = ({ variant, id, content }: CardProps) => {
       withBorder
       sx={(theme) => ({
         margin: '80px 0',
-        backgroundColor: dark ? theme.colors.dark[6] : theme.colors.gray[0],
-        color: colorScheme === 'dark' ? 'white' : theme.colors.dark[8],
-        borderColor:
-          colorScheme === 'dark' ? theme.colors.gray[8] : theme.colors.gray[2],
+        backgroundColor: isDark ? theme.colors.dark[6] : theme.colors.gray[0],
+        color: isDark ? 'white' : theme.colors.dark[8],
+        borderColor: isDark ? theme.colors.gray[8] : theme.colors.gray[2],
       })}
       id={id}
     >

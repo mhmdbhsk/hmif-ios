@@ -27,11 +27,13 @@ const informaticsOutline = [
     title: 'Fun Fact',
     description: 'Apa sih yang unik?',
     link: '#fun-fact',
+    color: '#FFEBCD',
   },
   {
     title: 'Video Profil',
     description: 'Kenal lebih dekat',
     link: '#video-profil',
+    color: '#BFF0DB',
   },
 ];
 
@@ -63,20 +65,9 @@ const Informatics: NextPageWithSeo = () => {
       <Stack spacing={80}>
         <Paragraph
           title='Tentang Kami'
-          content='Informatika/Ilmu Komputer adalah ilmu yang mempelajari baik
-              tentang komputasi, perangkat keras (hardware) maupun perangkat
-              lunak (software). Ilmu komputer mencakup beragam topik yang
-              berkaitan dengan komputer, mulai dari analisis abstrak algoritma
-              sampai subyek yang lebih konkret seperti bahasa pemrograman,
-              perangkat lunak, termasuk perangkat keras. Informatika beda loh
-              dengan Teknik Komputer! Sebagai suatu disiplin ilmu, Ilmu Komputer
-              lebih menekankan pada pemrograman komputer, dan rekayasa perangkat
-              lunak (software). Sementara teknik komputer lebih cenderung
-              berkaitan dengan hal-hal seperti perangkat keras komputer
-              (hardware). Di Universitas Diponegoro sendiri Departemen
-              Informatika merupakan bagian dari Fakultas Sains dan Matematika,
-              sedangkan Departemen Teknik Komputer merupakan bagian dari
-              Fakultas Teknik.'
+          content={[
+            'Informatika/Ilmu Komputer adalah ilmu yang mempelajari baik tentang komputasi, perangkat keras (hardware) maupun perangkat lunak (software). Ilmu komputer mencakup beragam topik yang berkaitan dengan komputer, mulai dari analisis abstrak algoritma sampai subyek yang lebih konkret seperti bahasa pemrograman, perangkat lunak, termasuk perangkat keras. Informatika beda loh dengan Teknik Komputer! Sebagai suatu disiplin ilmu, Ilmu Komputer lebih menekankan pada pemrograman komputer, dan rekayasa perangkat lunak (software). Sementara teknik komputer lebih cenderung berkaitan dengan hal-hal seperti perangkat keras komputer (hardware). Di Universitas Diponegoro sendiri Departemen Informatika merupakan bagian dari Fakultas Sains dan Matematika, sedangkan Departemen Teknik Komputer merupakan bagian dari Fakultas Teknik.',
+          ]}
           id='tentang-kami'
         />
 
@@ -94,7 +85,7 @@ const Informatics: NextPageWithSeo = () => {
         />
 
         <Paragraph
-          multiCol={2}
+          multiCol
           title='Sejarah Informatika'
           content={[
             'Pada tahun 1994 di Jurusan Matematika Universitas Diponegoro Semarang mulai memberlakukan kurikulum yang lebih mengarah pada aplikasi terapan di dunia nyata dan mengakomodasi kebutuhan pasar, sehingga kurikulum pada Jurusan Matematika Universitas Diponegoro Semarang dilakukan perubahan dengan membagi menjadi empat bidang peminatan, yaitu Matematika Murni, Matematika Terapan, Statistik, dan Ilmu Komputer.',

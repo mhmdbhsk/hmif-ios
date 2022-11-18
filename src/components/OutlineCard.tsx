@@ -85,7 +85,7 @@ const OutlineCard = ({ title, description, link, color }: OutlineCardProps) => {
       variants={containerMotion}
     >
       <Paper
-        radius={24}
+        radius={32}
         sx={{ padding: 32, background: color ?? '#B7C8FF', cursor: 'pointer' }}
         onClick={() => {
           router.push(link);

@@ -1,5 +1,6 @@
 import { IosLogo, KominfoLogo } from '@/assets';
 import SocialLinks from '@/configs/SocialLinks';
+import useColorScheme from '@/hooks/useColorScheme';
 import { useWindowSize } from '@/hooks/useMediaQuery';
 import useSharedStyles from '@/theme/shared-styles';
 import {
@@ -55,8 +56,7 @@ const useStyles = createStyles((theme) => ({
 const Footer = () => {
   const { classes } = useStyles();
   const { classes: sharedClasses } = useSharedStyles();
-  const { colorScheme } = useMantineColorScheme();
-  const dark = colorScheme === 'dark';
+  const isDark = useColorScheme();
   const { largeMobile, smallMobile, tablet, extraSmallMobile } =
     useWindowSize();
 
@@ -76,10 +76,9 @@ const Footer = () => {
       withBorder
       className={classes.paperMargin}
       sx={(theme) => ({
-        backgroundColor: dark ? theme.colors.dark[6] : theme.colors.gray[0],
-        color: colorScheme === 'dark' ? 'white' : theme.colors.dark[8],
-        borderColor:
-          colorScheme === 'dark' ? theme.colors.gray[8] : theme.colors.gray[2],
+        backgroundColor: isDark ? theme.colors.dark[6] : theme.colors.gray[0],
+        color: isDark ? 'white' : theme.colors.dark[8],
+        borderColor: isDark ? theme.colors.gray[8] : theme.colors.gray[2],
       })}
     >
       <Stack
@@ -120,10 +119,7 @@ const Footer = () => {
 
       <Divider
         sx={(theme) => ({
-          borderColor:
-            colorScheme === 'dark'
-              ? theme.colors.gray[8]
-              : theme.colors.gray[2],
+          borderColor: isDark ? theme.colors.gray[8] : theme.colors.gray[2],
         })}
       />
 

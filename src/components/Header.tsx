@@ -1,4 +1,5 @@
 import { IosLogo } from '@/assets';
+import useColorScheme from '@/hooks/useColorScheme';
 import { useWindowSize } from '@/hooks/useMediaQuery';
 import { AppLinksDataDto } from '@/libs/dto';
 import {
@@ -10,7 +11,6 @@ import {
   Burger,
   Text,
   Box,
-  useMantineColorScheme,
   Anchor,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -67,8 +67,7 @@ export default function HeaderAction({ links }: HeaderActionProps) {
   const { classes, theme } = useStyles();
   const router = useRouter();
   const [opened, { toggle }] = useDisclosure(false);
-  const { colorScheme } = useMantineColorScheme();
-  const dark = colorScheme === 'dark';
+  const isDark = useColorScheme();
   const { largeMobile, smallMobile, tablet, extraSmallMobile } =
     useWindowSize();
 
@@ -94,22 +93,22 @@ export default function HeaderAction({ links }: HeaderActionProps) {
       }}
       sx={{
         '&:hover': {
-          backgroundColor:
-            colorScheme === 'dark'
-              ? link.disabled
-                ? 'transparent'
-                : theme.colors.dark[9]
-              : 'transparent',
+          backgroundColor: isDark
+            ? link.disabled
+              ? 'transparent'
+              : theme.colors.dark[9]
+            : link.disabled
+            ? 'transparent'
+            : theme.colors.gray[2],
         },
         cursor: link.disabled ? 'not-allowed' : 'pointer',
-        color:
-          colorScheme === 'dark'
-            ? link.disabled
-              ? theme.colors.gray[7]
-              : theme.colors.gray[5]
-            : link.disabled
-            ? theme.colors.gray[6]
-            : theme.colors.gray[8],
+        color: isDark
+          ? link.disabled
+            ? theme.colors.gray[7]
+            : theme.colors.gray[5]
+          : link.disabled
+          ? theme.colors.gray[6]
+          : theme.colors.gray[8],
       }}
     >
       {link.label}
@@ -122,8 +121,8 @@ export default function HeaderAction({ links }: HeaderActionProps) {
       sx={(theme) => ({
         borderBottom: 0,
         padding: '0px 24px',
-        backgroundColor: dark ? theme.colors.dark[6] : theme.colors.gray[0],
-        color: colorScheme === 'dark' ? 'white' : theme.colors.dark[8],
+        backgroundColor: isDark ? theme.colors.dark[6] : theme.colors.gray[0],
+        color: isDark ? 'white' : theme.colors.dark[8],
       })}
     >
       <Container
@@ -145,7 +144,7 @@ export default function HeaderAction({ links }: HeaderActionProps) {
             opened={opened}
             onClick={toggle}
             size='sm'
-            color={colorScheme === 'dark' ? 'white' : theme.colors.dark[8]}
+            color={isDark ? 'white' : theme.colors.dark[8]}
           />
           <Group
             spacing={0}

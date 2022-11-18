@@ -63,12 +63,14 @@ const useStyles = createStyles((theme) => ({
 type JumbotronProps = {
   title: string | ReactNode;
   description: string | ReactNode;
+  background?: string;
 };
 
-const Jumbotron = ({ title, description }: JumbotronProps) => {
+const Jumbotron = ({ title, description, background }: JumbotronProps) => {
   const { largeMobile, smallMobile, tablet, extraSmallMobile } =
     useWindowSize();
   const { classes } = useStyles();
+
   return (
     <Paper
       radius={
@@ -84,7 +86,7 @@ const Jumbotron = ({ title, description }: JumbotronProps) => {
       }
       className={classes.jumbotronPadding}
       sx={{
-        background: '#DEDEFB',
+        background: background ?? '#DEDEFB',
       }}
     >
       <Stack spacing={16}>
