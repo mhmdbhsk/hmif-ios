@@ -78,8 +78,8 @@ const Paragraph = ({
           sx={{ textJustify: 'inter-character' }}
           className={sharedClasses.regularFontResponsive}
         >
-          {content.map((item) => (
-            <p>{item}</p>
+          {content.map((item, index) => (
+            <p key={index}>{item}</p>
           ))}
         </Text>
       </Box>
@@ -128,8 +128,8 @@ const Paragraph = ({
             sx={{ textJustify: 'inter-character' }}
             className={sharedClasses.regularFontResponsive}
           >
-            {content.map((item) => (
-              <p>{item}</p>
+            {content.map((item, index) => (
+              <p key={index}>{item}</p>
             ))}
           </Text>
         </Grid.Col>
