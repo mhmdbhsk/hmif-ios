@@ -4,8 +4,8 @@ const AppNavigationLinks = [
     label: 'Informatics',
   },
   {
-    link: '/community',
-    label: 'Community',
+    link: '/organization',
+    label: 'Organization',
   },
   {
     link: '/events',

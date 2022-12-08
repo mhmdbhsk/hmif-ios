@@ -1,11 +1,19 @@
-import { Box, createStyles, Grid, Image, Stack, Text } from '@mantine/core';
+import {
+  Box,
+  Card,
+  createStyles,
+  Grid,
+  Image,
+  Stack,
+  Text,
+} from '@mantine/core';
 import { Jumbotron, Title } from '@/components';
 import useSharedStyles from '@/theme/shared-styles';
 import { NextPageWithSeo } from '@/types/next-page-with-seo';
 import Outline from '@/components/Outline';
 import Paragraph from '@/components/Paragraph';
-import Card from '@/components/Card';
 import Tabs from '@/components/Tabs';
+import nobleValueData from '@/constants/nobleValueData';
 
 const useStyles = createStyles((theme) => ({
   titleFont: {
@@ -28,7 +36,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const communityOutline = [
+const organizationOutline = [
   {
     title: 'Profil',
     description: 'Profil HMIF Undip',
@@ -54,10 +62,10 @@ const communityOutline = [
   },
 ];
 
-const Community: NextPageWithSeo = () => {
+const Organization: NextPageWithSeo = () => {
   const { classes: sharedClasses } = useSharedStyles();
   const { classes } = useStyles();
-  const communityTabsContent = [
+  const organizationTabsContent = [
     {
       tabTitle: 'Sejarah',
       tabContent: (
@@ -82,12 +90,87 @@ const Community: NextPageWithSeo = () => {
     },
     {
       tabTitle: 'Visi Misi',
-      tabContent: <Text>Visi Misi</Text>,
       tabValue: 'vision-and-mission',
+      tabContent: (
+        <Box sx={{ display: 'flex', width: '100%', margin: '24px 0' }}>
+          <Paragraph
+            content={[
+              <Box key={1} sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Text size={24} weight='bold'>
+                  Visi
+                </Text>
+
+                <Box>
+                  <ul>
+                    <li>
+                      Memperkuat komunikasi dan relasi terhadap seluruh elemen
+                      Informatika sehingga menciptakan sinergitas yang baik
+                    </li>
+                    <li>
+                      Menciptakan ikmin yang harmonis berdasarkan nilai
+                      kekeluargaan guna meningkatkan profesional dan solidaritas
+                      di internal HMIF 2022
+                    </li>
+                    <li>
+                      Mengoptimalkan peran media dan kehumasan sebagai sarana
+                      penyampaian informasi, menjalin relasi dengan lingkup
+                      eksternal, serta representasi citra positif HMIF 2022
+                    </li>
+                  </ul>
+                </Box>
+              </Box>,
+              <Box key={2} sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Text size={24} weight='bold'>
+                  Misi
+                </Text>
+
+                <Text>
+                  Terbentuknya HMIF 2022 sebagai himpunan yang Kolaboratif,
+                  Inovatif, Menyeluruh dan mampu menjadi Samudra dalam
+                  mewujudkan asa Informatika
+                </Text>
+              </Box>,
+            ]}
+            id='vision-and-mission'
+            multiCol
+          />
+        </Box>
+      ),
     },
     {
       tabTitle: 'Nilai Luhur',
-      tabContent: <Text>Nilai Luhur</Text>,
+      tabContent: (
+        <Box sx={{ paddingTop: 72, margin: -24 }}>
+          <Grid gutter='xl' justify='space-between' sx={{ margin: -12 }}>
+            {nobleValueData.map((item) => (
+              <Grid.Col xl={6} md={12} key={item.title}>
+                <Card
+                  radius={32}
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      padding: 16,
+                      width: 'max-content',
+                    }}
+                  >
+                    {item.icon}
+                    {item.title}
+                  </Box>
+                </Card>
+              </Grid.Col>
+            ))}
+          </Grid>
+        </Box>
+      ),
       tabValue: 'noble-value',
     },
   ];
@@ -111,7 +194,7 @@ const Community: NextPageWithSeo = () => {
 
       <Box className={sharedClasses.contentSpacing}>
         <Title title='HMIF’s Corner' subtitle='Yuk, kenalan sama HMIF Undip!' />
-        <Outline outline={communityOutline} />
+        <Outline outline={organizationOutline} />
       </Box>
 
       <Stack spacing={80}>
@@ -120,14 +203,14 @@ const Community: NextPageWithSeo = () => {
             Profil
           </Text>
 
-          <Tabs content={communityTabsContent} />
+          <Tabs content={organizationTabsContent} />
         </Stack>
       </Stack>
     </>
   );
 };
 
-Community.title = 'Community';
-Community.pageTitle = 'Community';
+Organization.title = 'Himpunan';
+Organization.pageTitle = 'Himpunan';
 
-export default Community;
+export default Organization;

@@ -1,6 +1,7 @@
 import { useWindowSize } from '@/hooks/useMediaQuery';
 import useSharedStyles from '@/theme/shared-styles';
 import { Box, createStyles, Grid, Image, Stack, Text } from '@mantine/core';
+import React from 'react';
 
 const useStyles = createStyles((theme) => ({
   titleFont: {
@@ -24,7 +25,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 type ParagraphProps = {
-  content: string[];
+  content: string[] | React.ReactNode[];
   title?: string;
   multiCol?: boolean;
   multiColWithImage?: boolean;
@@ -52,15 +53,19 @@ const Paragraph = ({
       </Text>
 
       <Grid gutter='xl'>
-        {(content as []).map((paragraph, index) => (
+        {content.map((item, index) => (
           <Grid.Col xl={6} md={12} key={index}>
-            <Text
-              align='justify'
-              sx={{ textJustify: 'inter-character' }}
-              className={sharedClasses.regularFontResponsive}
-            >
-              {paragraph}
-            </Text>
+            {typeof item !== 'string' ? (
+              item
+            ) : (
+              <Text
+                align='justify'
+                sx={{ textJustify: 'inter-character' }}
+                className={sharedClasses.regularFontResponsive}
+              >
+                {item}
+              </Text>
+            )}
           </Grid.Col>
         ))}
       </Grid>
@@ -125,7 +130,7 @@ const Paragraph = ({
         >
           <Text
             align='justify'
-            sx={{ textJustify: 'inter-character' }}
+            sx={{ textJustify: 'inter-word' }}
             className={sharedClasses.regularFontResponsive}
           >
             {content.map((item, index) => (

@@ -8,14 +8,8 @@ import {
 import { RootLayout } from '@/components';
 import theme from '@/theme';
 import { AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
-import {
-  GetServerSidePropsContext,
-  NextComponentType,
-  NextPageContext,
-} from 'next';
+import { NextComponentType, NextPageContext } from 'next';
 import { NextPageWithSeo } from '@/types/next-page-with-seo';
-import { getCookie, setCookie } from 'cookies-next';
-import { useState } from 'react';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 
 type NextComponentWithSeo = NextComponentType<NextPageContext, any, {}> &
