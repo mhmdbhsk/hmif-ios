@@ -96,7 +96,9 @@ const OutlineCard = ({ title, description, link, color }: OutlineCardProps) => {
             <Text className={classes.titleFont} weight='bold'>
               {title}
             </Text>
-            <Text className={classes.descriptionFont}>{description}</Text>
+            <Text className={classes.descriptionFont} sx={{ opacity: 0.5 }}>
+              {description}
+            </Text>
           </Stack>
 
           <Box

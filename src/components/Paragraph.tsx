@@ -100,7 +100,7 @@ const Paragraph = ({
       )}
 
       <Grid gutter='xl'>
-        <Grid.Col xl={6} md={12}>
+        <Grid.Col xl={4} md={12}>
           <Image
             src={image}
             alt={title}
@@ -122,7 +122,7 @@ const Paragraph = ({
           />
         </Grid.Col>
         <Grid.Col
-          xl={6}
+          xl={8}
           md={12}
           sx={{
             paddingLeft: !desktop ? '48px' : 0,

@@ -11,7 +11,6 @@ import {
   Paper,
   Stack,
   Text,
-  useMantineColorScheme,
 } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({

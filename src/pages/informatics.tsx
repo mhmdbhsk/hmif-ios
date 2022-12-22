@@ -102,8 +102,8 @@ const Informatics: NextPageWithSeo = () => {
           title: 'Video Profil',
           description:
             'Penasaran banget sama Informatika Universitas Diponegoro? Yuk, tonton video profil departemen Informatika Universitas Diponegoro yang keren abis!',
-          link: 'https://www.youtube.com/watch?v=3NRnR2bdZBI&ab_channel=HMIFUndip',
-          videoId: '3NRnR2bdZBI',
+          link: 'https://www.youtube.com/watch?v=F-4QQuaeKfs&ab_channel=HMIFUndip',
+          videoId: 'F-4QQuaeKfs',
           channel: 'https://www.youtube.com/c/HMIFUndip',
         }}
       />

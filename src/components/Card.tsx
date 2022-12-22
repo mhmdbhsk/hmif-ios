@@ -8,7 +8,6 @@ import {
   Paper,
   Stack,
   Text,
-  useMantineColorScheme,
 } from '@mantine/core';
 import { FiArrowUpRight } from 'react-icons/fi';
 

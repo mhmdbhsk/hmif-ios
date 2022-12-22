@@ -132,7 +132,6 @@ export default function HeaderAction({ links }: HeaderActionProps) {
       >
         <Group
           sx={{
-            cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -148,23 +147,24 @@ export default function HeaderAction({ links }: HeaderActionProps) {
           />
           <Group
             spacing={0}
-            onClick={() => router.push('/')}
             sx={{
               display: 'flex',
               flexGrow: 1,
-              justifyContent: largeMobile ? 'end' : 'center',
+              // justifyContent: largeMobile ? 'end' : 'center',
             }}
           >
             <Box
               sx={{
                 display: 'flex',
                 alignItems: 'center',
+                cursor: 'pointer',
               }}
+              onClick={() => router.push('/')}
             >
               <IosLogo />
             </Box>
 
-            <Box
+            {/* <Box
               sx={{ marginLeft: 16, display: largeMobile ? 'none' : 'flex' }}
             >
               <Text
@@ -180,10 +180,11 @@ export default function HeaderAction({ links }: HeaderActionProps) {
                     : 16
                 }
                 weight={600}
+                onClick={() => router.push('/')}
               >
                 Informatics Ongoing Story
               </Text>
-            </Box>
+            </Box> */}
           </Group>
         </Group>
 

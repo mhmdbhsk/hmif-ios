@@ -14,6 +14,8 @@ import Outline from '@/components/Outline';
 import Paragraph from '@/components/Paragraph';
 import Tabs from '@/components/Tabs';
 import nobleValueData from '@/constants/nobleValueData';
+import Division from '@/components/Division';
+import DivisionLinks from '@/configs/DivisionLinks';
 
 const useStyles = createStyles((theme) => ({
   titleFont: {
@@ -205,6 +207,15 @@ const Organization: NextPageWithSeo = () => {
 
           <Tabs content={organizationTabsContent} />
         </Stack>
+      </Stack>
+
+      <Stack>
+        <Stack spacing={24} sx={{ padding: '80px 24px 0px' }} id='divisi'>
+          <Text weight={600} className={classes.titleFont}>
+            Divisi
+          </Text>
+        </Stack>
+        <Division division={DivisionLinks} />
       </Stack>
     </>
   );
