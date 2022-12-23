@@ -1,5 +1,13 @@
 import { WrapperArrowShape } from '@/assets';
-import { Box, createStyles, Group, Paper, Stack, Text } from '@mantine/core';
+import {
+  Box,
+  createStyles,
+  Group,
+  Image,
+  Paper,
+  Stack,
+  Text,
+} from '@mantine/core';
 import { useRouter } from 'next/router';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
@@ -7,6 +15,11 @@ import { useWindowSize } from '@/hooks/useMediaQuery';
 import { ReactNode } from 'react';
 
 const useStyles = createStyles((theme) => ({
+  iconWrapper: {
+    width: 24,
+    margin: '0 auto',
+  },
+
   titleFont: {
     fontSize: 36,
     [`@media (max-width: ${theme.breakpoints.xl}px)`]: {
@@ -170,7 +183,12 @@ const DivisionCard = ({
                     bottom: 0,
                   }}
                 >
-                  {icon}
+                  <Image
+                    src={icon as string}
+                    w={24}
+                    h={24}
+                    classNames={{ imageWrapper: classes.iconWrapper }}
+                  />
                 </Box>
               </Box>
             </Group>

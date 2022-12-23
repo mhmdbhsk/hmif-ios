@@ -1,9 +1,8 @@
 import {
   Box,
-  Card,
+  Card as MantineCard,
   createStyles,
   Grid,
-  Image,
   Stack,
   Text,
 } from '@mantine/core';
@@ -16,6 +15,8 @@ import Tabs from '@/components/Tabs';
 import nobleValueData from '@/constants/nobleValueData';
 import Division from '@/components/Division';
 import DivisionLinks from '@/configs/DivisionLinks';
+import Card from '@/components/Card';
+import BiroLinks from '@/configs/BiroLinks';
 
 const useStyles = createStyles((theme) => ({
   titleFont: {
@@ -146,7 +147,7 @@ const Organization: NextPageWithSeo = () => {
           <Grid gutter='xl' justify='space-between' sx={{ margin: -12 }}>
             {nobleValueData.map((item) => (
               <Grid.Col xl={6} md={12} key={item.title}>
-                <Card
+                <MantineCard
                   radius={32}
                   sx={{
                     display: 'flex',
@@ -167,7 +168,7 @@ const Organization: NextPageWithSeo = () => {
                     {item.icon}
                     {item.title}
                   </Box>
-                </Card>
+                </MantineCard>
               </Grid.Col>
             ))}
           </Grid>
@@ -216,6 +217,18 @@ const Organization: NextPageWithSeo = () => {
           </Text>
         </Stack>
         <Division division={DivisionLinks} />
+      </Stack>
+
+      <Stack>
+        <Stack spacing={24} sx={{ padding: '80px 24px 0px' }} id='biro'>
+          <Text weight={600} className={classes.titleFont}>
+            Biro
+          </Text>
+        </Stack>
+
+        {BiroLinks.map((item) => (
+          <Card id={item.title} variant='biro' content={item} />
+        ))}
       </Stack>
     </>
   );

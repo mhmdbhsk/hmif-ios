@@ -1,5 +1,6 @@
 import useSharedStyles from '@/theme/shared-styles';
 import { Box, Grid } from '@mantine/core';
+import { ReactNode } from 'react';
 import DivisionCard from './DivisionCard';
 
 type DivisionProps = {
@@ -9,7 +10,7 @@ type DivisionProps = {
 type DivisionItemProps = {
   title: string;
   description: string;
-  image: string | null;
+  icon: string | ReactNode;
   path: string;
   color?: string;
   isBigger?: boolean;
