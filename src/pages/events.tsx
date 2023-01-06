@@ -43,6 +43,12 @@ const eventsOutline = [
     link: '#agenda',
     color: '#FFEBCD',
   },
+  {
+    title: 'Gallery',
+    description: 'Galeri kegiatan HMIF',
+    link: '#gallery',
+    color: '#BFF0DB',
+  },
 ];
 
 const EventsActivities: NextPageWithSeo = () => {
@@ -73,7 +79,7 @@ const EventsActivities: NextPageWithSeo = () => {
         <Outline outline={eventsOutline} />
       </Box>
 
-      <Stack>
+      <Stack id='events'>
         <Stack spacing={24} sx={{ padding: '80px 24px 0px' }} id='divisi'>
           <Text weight={600} className={classes.titleFont}>
             Events
@@ -81,7 +87,7 @@ const EventsActivities: NextPageWithSeo = () => {
         </Stack>
         <Events events={EventsLinks} />
       </Stack>
-      <Stack>
+      <Stack id='agenda'>
         <Stack spacing={24} sx={{ padding: '80px 24px 0px' }} id='divisi'>
           <Text weight={600} className={classes.titleFont}>
             Agenda
@@ -89,7 +95,7 @@ const EventsActivities: NextPageWithSeo = () => {
         </Stack>
         <Events events={AgendasLinks} />
       </Stack>
-      <Stack>
+      <Stack id='gallery'>
         <Stack spacing={24} sx={{ padding: '80px 24px 0px' }} id='divisi'>
           <Text weight={600} className={classes.titleFont}>
             Gallery
@@ -101,7 +107,7 @@ const EventsActivities: NextPageWithSeo = () => {
   );
 };
 
-EventsActivities.title = 'Himpunan';
-EventsActivities.pageTitle = 'Himpunan';
+EventsActivities.title = 'Event, Agenda, dan Galeri';
+EventsActivities.pageTitle = 'Event, Agenda, dan Galeri';
 
 export default EventsActivities;

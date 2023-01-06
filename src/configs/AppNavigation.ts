@@ -14,7 +14,6 @@ const AppNavigationLinks = [
   {
     link: '/virtual',
     label: 'Virtual',
-    disabled: true,
   },
   {
     link: '/information',
