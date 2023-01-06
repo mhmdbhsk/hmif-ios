@@ -1,8 +1,1 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_156_522" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-<rect width="24" height="24" fill="#D9D9D9"/>
-</mask>
-<g mask="url(#mask0_156_522)">
-<path d="M8.5 9L7.4 6.6L5 5.5L7.4 4.4L8.5 2L9.6 4.4L12 5.5L9.6 6.6L8.5 9ZM15 12L14.05 9.95L12 9L14.05 8.05L15 6L15.95 8.05L18 9L15.95 9.95L15 12ZM4 14L3.05 11.95L1 11L3.05 10.05L4 8L4.95 10.05L7 11L4.95 11.95L4 14ZM4.5 20.5L3 19L10.5 11.5L14.5 15.5L21.6 7.525L23 8.925L14.5 18.5L10.5 14.5L4.5 20.5Z" fill="#1C1B1F"/>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><mask id="mask0_156_522" style="mask-type:alpha" width="24" height="24" x="0" y="0" maskUnits="userSpaceOnUse"><rect width="24" height="24" fill="#D9D9D9"/></mask><g mask="url(#mask0_156_522)"><path fill="#1C1B1F" d="M8.5 9L7.4 6.6L5 5.5L7.4 4.4L8.5 2L9.6 4.4L12 5.5L9.6 6.6L8.5 9ZM15 12L14.05 9.95L12 9L14.05 8.05L15 6L15.95 8.05L18 9L15.95 9.95L15 12ZM4 14L3.05 11.95L1 11L3.05 10.05L4 8L4.95 10.05L7 11L4.95 11.95L4 14ZM4.5 20.5L3 19L10.5 11.5L14.5 15.5L21.6 7.525L23 8.925L14.5 18.5L10.5 14.5L4.5 20.5Z"/></g></svg>
