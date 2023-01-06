@@ -1,5 +1,4 @@
 import { IosLogo } from '@/assets';
-import useColorScheme from '@/hooks/useColorScheme';
 import { useWindowSize } from '@/hooks/useMediaQuery';
 import { AppLinksDataDto } from '@/libs/dto';
 import {
@@ -8,14 +7,14 @@ import {
   Container,
   Group,
   Button,
-  Burger,
   Box,
   Anchor,
+  useMantineColorScheme,
 } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
 import { useRouter } from 'next/router';
 import { FiArrowUpRight } from 'react-icons/fi';
 import ColorSchemeToggle from './ColorSchemeToggle';
+import Menu from './Menu';
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -65,8 +64,8 @@ interface HeaderActionProps {
 export default function HeaderAction({ links }: HeaderActionProps) {
   const { classes, theme } = useStyles();
   const router = useRouter();
-  const [opened, { toggle }] = useDisclosure(false);
-  const isDark = useColorScheme();
+  const { colorScheme } = useMantineColorScheme();
+  const isDark = colorScheme === 'dark';
   const { largeMobile, smallMobile, tablet, extraSmallMobile } =
     useWindowSize();
 
@@ -137,13 +136,8 @@ export default function HeaderAction({ links }: HeaderActionProps) {
             flexGrow: 1,
           }}
         >
-          <Burger
-            className={classes.burger}
-            opened={opened}
-            onClick={toggle}
-            size='sm'
-            color={isDark ? 'white' : theme.colors.dark[8]}
-          />
+          <Menu links={links} />
+
           <Group
             spacing={0}
             sx={{
