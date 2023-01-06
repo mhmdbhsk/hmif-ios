@@ -9,9 +9,7 @@ import {
   Text,
 } from '@mantine/core';
 import { useRouter } from 'next/router';
-import { FiArrowUpRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
-import { useWindowSize } from '@/hooks/useMediaQuery';
 import { ReactNode } from 'react';
 
 const useStyles = createStyles((theme) => ({

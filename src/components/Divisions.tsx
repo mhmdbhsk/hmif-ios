@@ -3,11 +3,11 @@ import { Box, Grid } from '@mantine/core';
 import { ReactNode } from 'react';
 import DivisionCard from './DivisionCard';
 
-type DivisionProps = {
-  division: DivisionItemProps[];
+type DivisionsProps = {
+  division: DivisionsItemProps[];
 };
 
-type DivisionItemProps = {
+type DivisionsItemProps = {
   title: string;
   description: string;
   icon: string | ReactNode;
@@ -16,7 +16,7 @@ type DivisionItemProps = {
   isBigger?: boolean;
 };
 
-const Division = ({ division }: DivisionProps) => {
+const Divisions = ({ division }: DivisionsProps) => {
   const { classes: sharedClasses } = useSharedStyles();
 
   return (
@@ -37,4 +37,4 @@ const Division = ({ division }: DivisionProps) => {
   );
 };
 
-export default Division;
+export default Divisions;

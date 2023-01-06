@@ -10,7 +10,6 @@ const AppNavigationLinks = [
   {
     link: '/events',
     label: 'Events',
-    disabled: true,
   },
   {
     link: '/virtual',

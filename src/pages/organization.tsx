@@ -13,8 +13,8 @@ import Outline from '@/components/Outline';
 import Paragraph from '@/components/Paragraph';
 import Tabs from '@/components/Tabs';
 import nobleValueData from '@/constants/nobleValueData';
-import Division from '@/components/Division';
-import DivisionLinks from '@/configs/DivisionLinks';
+import Division from '@/components/Divisions';
+import DivisionsLinks from '@/configs/DivisionsLinks';
 import Card from '@/components/Card';
 import BiroLinks from '@/configs/BiroLinks';
 
@@ -216,7 +216,7 @@ const Organization: NextPageWithSeo = () => {
             Divisi
           </Text>
         </Stack>
-        <Division division={DivisionLinks} />
+        <Division division={DivisionsLinks} />
       </Stack>
 
       <Stack>
@@ -227,7 +227,12 @@ const Organization: NextPageWithSeo = () => {
         </Stack>
 
         {BiroLinks.map((item) => (
-          <Card id={item.title} variant='biro' content={item} />
+          <Card
+            id={item.title}
+            variant='biro'
+            content={item}
+            key={item.title}
+          />
         ))}
       </Stack>
     </>

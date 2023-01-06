@@ -51,7 +51,7 @@ export default function App(props: ExtendedAppProps) {
           <AnimatePresence
             initial={false}
             onExitComplete={() => window.scrollTo(0, 0)}
-            exitBeforeEnter
+            mode='wait'
           >
             <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
               <RootLayout pageTitle={Component.pageTitle}>

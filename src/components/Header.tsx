@@ -9,7 +9,6 @@ import {
   Group,
   Button,
   Burger,
-  Text,
   Box,
   Anchor,
 } from '@mantine/core';
@@ -150,7 +149,6 @@ export default function HeaderAction({ links }: HeaderActionProps) {
             sx={{
               display: 'flex',
               flexGrow: 1,
-              // justifyContent: largeMobile ? 'end' : 'center',
             }}
           >
             <Box
@@ -214,7 +212,7 @@ export default function HeaderAction({ links }: HeaderActionProps) {
             }}
             rightIcon={<FiArrowUpRight />}
           >
-            Return to old version
+            Kembali ke versi sebelumnya
           </Button>
         </Group>
       </Container>
