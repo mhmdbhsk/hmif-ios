@@ -18,7 +18,6 @@ const AppNavigationLinks = [
   {
     link: '/information',
     label: 'Information',
-    disabled: true,
   },
 ];
 

@@ -47,7 +47,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 type BaseProps = {
-  variant: 'video-profile' | 'event' | 'biro' | 'virtual';
+  variant: 'video-profile' | 'event' | 'biro' | 'virtual' | 'information';
   id: string;
 };
 
@@ -98,6 +98,10 @@ type ConditionalProps =
     }
   | {
       variant: 'virtual';
+      content: VirtualContentProps;
+    }
+  | {
+      variant: 'information';
       content: VirtualContentProps;
     };
 
@@ -376,6 +380,70 @@ const Card = ({ variant, id, content }: CardProps) => {
             </Grid.Col>
           </Grid>
         );
+
+      case 'information':
+        return (
+          <Grid>
+            <Grid.Col
+              xl={6}
+              md={12}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: 64,
+                height: '100%',
+                color: '#000',
+              }}
+            >
+              <Stack spacing={44}>
+                <Stack spacing={8}>
+                  <Group>
+                    <Box sx={{ display: 'flex', flexGrow: 1 }}>
+                      <Text weight={600} className={classes.titleFont}>
+                        {content.title}
+                      </Text>
+                    </Box>
+                  </Group>
+
+                  <Text className={sharedClasses.regularFontResponsive}>
+                    {content.description}
+                  </Text>
+                </Stack>
+
+                <Anchor
+                  href={content.path}
+                  target='_blank'
+                  className={sharedClasses.regularFontResponsive}
+                >
+                  Buka Laman <FiArrowUpRight />
+                </Anchor>
+              </Stack>
+            </Grid.Col>
+
+            <Grid.Col xl={6} md={12} sx={{ height: '100%' }}>
+              <Image
+                radius='md'
+                src={content.thumbnail}
+                alt={content.title}
+                width={'100%'}
+                height={'100%'}
+                fit='cover'
+                styles={{
+                  caption: {
+                    textAlign: 'start',
+                  },
+                  image: {
+                    borderRadius: 64,
+                    height: '100%',
+                  },
+                  imageWrapper: {
+                    height: '100%',
+                  },
+                }}
+              />
+            </Grid.Col>
+          </Grid>
+        );
       default:
         break;
     }
@@ -388,7 +456,9 @@ const Card = ({ variant, id, content }: CardProps) => {
       sx={(theme) => ({
         margin: variant === 'biro' ? '80px 0px 0px' : '80px 0',
         backgroundColor:
-          variant === 'virtual'
+          variant === 'information'
+            ? '#F9F2FC'
+            : variant === 'virtual'
             ? '#DBF6EB'
             : variant === 'biro'
             ? '#F1F4FF'

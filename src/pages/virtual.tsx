@@ -4,7 +4,6 @@ import useSharedStyles from '@/theme/shared-styles';
 import { NextPageWithSeo } from '@/types/next-page-with-seo';
 import Outline from '@/components/Outline';
 import Card from '@/components/Card';
-import BiroLinks from '@/configs/BiroLinks';
 import VirtualLinks from '@/configs/VirtualLinks';
 
 const useStyles = createStyles((theme) => ({
