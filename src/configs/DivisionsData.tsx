@@ -31,20 +31,6 @@ const DivisionData = [
     subtitle:
       'Mata yang tajam untuk melihat aktivitas dan Telinga yang peka untuk mendengar segala keluh kesah',
     image: '/images/division-image/litbang.png',
-    description: (
-      <>
-        <b>Anggota</b>
-
-        <ul>
-          <li>Muhammad Rifqi Zaidan ( Ketua )</li>
-          <li>Muhammad Fikri Alfaqih ( Wakil Ketua )</li>
-          <li>R. Damanhuri ( Sekretaris 1 )</li>
-          <li>Laily Novita Sari ( Sekretaris 2 )</li>
-          <li>Anisatul Ma&apos;rifah ( Bendahara 1 )</li>
-          <li>Salsabila Tuada ( Bendahara 2 )</li>
-        </ul>
-      </>
-    ),
   },
   {
     id: 'kominfo',
