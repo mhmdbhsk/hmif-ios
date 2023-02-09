@@ -1,10 +1,10 @@
-import { Image, useMantineTheme } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { Flex, Image, Text } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 
 type ImageProps = {
   image: string;
   title: string;
+  description: string;
 }[];
 
 type CarouselProps = {
@@ -12,10 +12,13 @@ type CarouselProps = {
 };
 
 function CardsCarousel({ data }: CarouselProps) {
-  const theme = useMantineTheme();
-  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
   const slides = data.map((item) => (
-    <Carousel.Slide key={item.title} sx={{ height: 400 }}>
+    <Carousel.Slide
+      key={item.title}
+      sx={{
+        height: 564,
+      }}
+    >
       <Image
         src={item.image}
         alt={item.title}
@@ -29,19 +32,28 @@ function CardsCarousel({ data }: CarouselProps) {
           },
         }}
       />
+
+      <Flex direction='column' gap={16} sx={{ margin: '32px 16px' }}>
+        <Text size={24} weight='bold'>
+          {item.title}
+        </Text>
+        <Text>{item.description}</Text>
+      </Flex>
     </Carousel.Slide>
   ));
 
   return (
-    <Carousel
-      slideSize='50%'
-      breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: 2 }]}
-      slideGap='xl'
-      align='start'
-      slidesToScroll={mobile ? 1 : 2}
-    >
-      {slides}
-    </Carousel>
+    <div>
+      <Carousel
+        slideSize='75%'
+        breakpoints={[{ maxWidth: 'sm', slideSize: '75%' }]}
+        slideGap='xl'
+        align='start'
+        slidesToScroll={1}
+      >
+        {slides}
+      </Carousel>
+    </div>
   );
 }
 

@@ -56,24 +56,34 @@ const virtualOutline = [
 
 const data = [
   {
-    image:
-      'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Best forests to visit in North America',
+    image: '/images/ekokeu-product/merchandise-informatics.jpg',
+    title: 'Merchandise Informatics (Matriks)',
+    description:
+      'Merchandise Informatics atau sering disebut Matriks menyediakan berbagai Merchandise untuk mahasiswa informatika. Merchandise yang disediakan pun beragam jenisnya dari T-Shirt, hoodie, sampai ke jersey. Bahkan Jaket Himpunan kebanggaan mahasiswa Informatika juga diproduksi melalui Matriks.',
   },
   {
-    image:
-      'https://images.unsplash.com/photo-1559494007-9f5847c49d94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Hawaii beaches review: better than you think',
+    image: '/images/ekokeu-product/infomart.jpg',
+    title: 'Informatics Mart (Infomart)',
+    description:
+      'Infomart memberikan akses mudah dalam membeli kebutuhan penunjang yang dibutuhkan mahasiswa Informatika. Mulai dari kebutuhan untuk keperluan akademik sampai kebutuhan penunjang lainnya. Kegiatan Infomart terpusat di ruang sekretariat HMIF lantai tiga gedung E FSM Undip.',
   },
   {
-    image:
-      'https://images.unsplash.com/photo-1608481337062-4093bf3ed404?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Mountains at night: 12 best locations to enjoy the view',
+    image: '/images/ekokeu-product/klinik-komputer.jpg',
+    title: 'Klinik Komputer (KK)',
+    description:
+      'Berawal dari permasalahan terkait komputer, Klinik Komputer menawarkan pelayanan berupa jasa service kepada mahasiswa Informatika maupun khalayak umum. Selain itu, Klinik Komputer juga memberikan layanan konsultasi terkait komputer serta memberikan konten edukasi yang disalurkan melalui media sosial Klinik Komputer.',
   },
   {
-    image:
-      'https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Aurora in Norway: when to visit for best experience',
+    image: '/images/ekokeu-product/promosi-bisnis.jpg',
+    title: 'Proposal Bisnis (PROMIS)',
+    description:
+      'Membangun branding yang baik untuk sebuah bisnis itu tidak mudah, terlebih saat masih berstatus sebagai mahasiswa. Melalui permasalahan ini, Promis membantu mahasiswa dalam menyebarluaskan bisnisnya kepada masyarakat luas. Dengan begitu diharapkan bisnis yang dipromosikan dapat menjangkau lebih banyak orang. ',
+  },
+  {
+    image: '/images/ekokeu-product/laporan-keuangan.jpg',
+    title: 'Laporan Keuangan Bulanan',
+    description:
+      'Sebagai bentuk pertanggungjawaban Divisi Ekokeu dalam perihal keuangan kepada HMIF Undip, dilakukan sebuah langkah publikasi mengenai keadaan sebenarnya keuangan di Divisi Ekokeu. Laporan Keuangan dilakukan secara berkala dalam jangka waktu sebulan sekali untuk memberikan transparansi yang jelas mengenai keuangan Divisi Ekokeu.',
   },
 ];
 
