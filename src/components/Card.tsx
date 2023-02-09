@@ -6,10 +6,12 @@ import {
   Anchor,
   Box,
   createStyles,
+  Flex,
   Grid,
   Group,
   Image,
   Paper,
+  SimpleGrid,
   Stack,
   Text,
 } from '@mantine/core';
@@ -78,9 +80,9 @@ type BiroContentProps = {
 type VirtualContentProps = {
   id: string;
   title: string;
-  description: string;
-  thumbnail: string;
-  path: string;
+  description: string | ReactNode | ReactJSXElement;
+  thumbnail: string | string[];
+  path?: string;
 };
 
 type ConditionalProps =
@@ -359,7 +361,7 @@ const Card = ({ variant, id, content }: CardProps) => {
             <Grid.Col xl={6} md={12} sx={{ height: '100%' }}>
               <Image
                 radius='md'
-                src={content.thumbnail}
+                src={content.thumbnail as string}
                 alt={content.title}
                 width={'100%'}
                 height={'100%'}
@@ -409,38 +411,80 @@ const Card = ({ variant, id, content }: CardProps) => {
                     {content.description}
                   </Text>
                 </Stack>
-
-                <Anchor
-                  href={content.path}
-                  target='_blank'
-                  className={sharedClasses.regularFontResponsive}
-                >
-                  Buka Laman <FiArrowUpRight />
-                </Anchor>
               </Stack>
             </Grid.Col>
 
-            <Grid.Col xl={6} md={12} sx={{ height: '100%' }}>
-              <Image
-                radius='md'
-                src={content.thumbnail}
-                alt={content.title}
-                width={'100%'}
-                height={'100%'}
-                fit='cover'
-                styles={{
-                  caption: {
-                    textAlign: 'start',
-                  },
-                  image: {
-                    borderRadius: 64,
-                    height: '100%',
-                  },
-                  imageWrapper: {
-                    height: '100%',
-                  },
-                }}
-              />
+            <Grid.Col
+              xl={6}
+              md={12}
+              sx={{
+                height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: 64,
+              }}
+            >
+              {typeof content.thumbnail === 'object' ? (
+                <SimpleGrid cols={content.thumbnail.length > 2 ? 2 : 1}>
+                  {(content.thumbnail as string[]).map((item, index) => (
+                    <Image
+                      radius='md'
+                      key={index}
+                      src={item}
+                      alt={item}
+                      width={'100%'}
+                      height={'100%'}
+                      fit='cover'
+                      styles={{
+                        caption: {
+                          textAlign: 'start',
+                        },
+                        image: {
+                          borderRadius: 24,
+                          height: '100%',
+                        },
+                        imageWrapper: {
+                          height: '100%',
+                        },
+                        figure: {
+                          height: '100%',
+                        },
+                        root: {
+                          height: '100%',
+                        },
+                      }}
+                    />
+                  ))}
+                </SimpleGrid>
+              ) : (
+                <Image
+                  radius='md'
+                  src={content.thumbnail}
+                  alt={content.title}
+                  width={'100%'}
+                  height={'100%'}
+                  fit='cover'
+                  styles={{
+                    caption: {
+                      textAlign: 'start',
+                    },
+                    image: {
+                      borderRadius: 48,
+                      height: '100%',
+                    },
+                    imageWrapper: {
+                      height: '100%',
+                    },
+                    figure: {
+                      height: '100%',
+                    },
+                    root: {
+                      height: '100%',
+                    },
+                  }}
+                />
+              )}
             </Grid.Col>
           </Grid>
         );

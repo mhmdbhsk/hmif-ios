@@ -22,10 +22,10 @@ function CardsCarousel({ data }: CarouselProps) {
       <Image
         src={item.image}
         alt={item.title}
-        height={400}
+        height={600}
         styles={{
           imageWrapper: {
-            height: 400,
+            height: 600,
           },
           image: {
             borderRadius: 32,
@@ -46,12 +46,12 @@ function CardsCarousel({ data }: CarouselProps) {
     <div>
       <Carousel
         slideSize='100%'
-        breakpoints={[
-          { maxWidth: 'sm', slideSize: '100%' },
-          { maxWidth: 'md', slideSize: '50%' },
-          { maxWidth: 'lg', slideSize: '50%' },
-          { maxWidth: 'xl', slideSize: '50%' },
-        ]}
+        // breakpoints={[
+        //   { maxWidth: 'sm', slideSize: '50%' },
+        //   { maxWidth: 'md', slideSize: '50%' },
+        //   { maxWidth: 'lg', slideSize: '50%' },
+        //   { maxWidth: 'xl', slideSize: '50%' },
+        // ]}
         slideGap='xl'
         align='start'
         slidesToScroll={1}

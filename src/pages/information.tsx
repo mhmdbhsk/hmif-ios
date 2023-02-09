@@ -30,9 +30,9 @@ const useStyles = createStyles((theme) => ({
 
 const virtualOutline = [
   {
-    title: 'Latihan Rutin',
-    description: 'Ayok Olahraga !',
-    link: '#latihan-rutin',
+    title: 'Latihan Rutin MATICS',
+    description: 'Ayok Olahraga!',
+    link: '#matics',
   },
   {
     title: 'Prospek Alumni',
@@ -42,13 +42,13 @@ const virtualOutline = [
   },
   {
     title: 'Bus Undip',
-    description: 'Ini dia kunci IPK 4.00',
+    description: 'Gratis Lohh!!',
     link: '#bus-undip',
     color: '#BFF0DB',
   },
   {
     title: 'Produk Ekokeu',
-    description: 'Semua informasi ada disini lohh!',
+    description: 'Semua kebutuhan ada disini lohh!',
     link: '#produk-ekokeu',
     color: '#FFCDCD',
   },
