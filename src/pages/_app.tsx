@@ -11,6 +11,7 @@ import { AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 import { NextComponentType, NextPageContext } from 'next';
 import { NextPageWithSeo } from '@/types/next-page-with-seo';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
+import { Analytics } from '@vercel/analytics/react';
 
 type NextComponentWithSeo = NextComponentType<NextPageContext, any, {}> &
   Partial<NextPageWithSeo>;
@@ -56,6 +57,7 @@ export default function App(props: ExtendedAppProps) {
             <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
               <RootLayout pageTitle={Component.pageTitle}>
                 <Component {...pageProps} />
+                <Analytics />
               </RootLayout>
             </MantineProvider>
           </AnimatePresence>
