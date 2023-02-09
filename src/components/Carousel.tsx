@@ -16,7 +16,7 @@ function CardsCarousel({ data }: CarouselProps) {
     <Carousel.Slide
       key={item.title}
       sx={{
-        height: 564,
+        height: 'max-content',
       }}
     >
       <Image
@@ -37,7 +37,7 @@ function CardsCarousel({ data }: CarouselProps) {
         <Text size={24} weight='bold'>
           {item.title}
         </Text>
-        <Text>{item.description}</Text>
+        <Text opacity={0.5}>{item.description}</Text>
       </Flex>
     </Carousel.Slide>
   ));
@@ -45,8 +45,13 @@ function CardsCarousel({ data }: CarouselProps) {
   return (
     <div>
       <Carousel
-        slideSize='75%'
-        breakpoints={[{ maxWidth: 'sm', slideSize: '75%' }]}
+        slideSize='100%'
+        breakpoints={[
+          { maxWidth: 'sm', slideSize: '100%' },
+          { maxWidth: 'md', slideSize: '50%' },
+          { maxWidth: 'lg', slideSize: '50%' },
+          { maxWidth: 'xl', slideSize: '50%' },
+        ]}
         slideGap='xl'
         align='start'
         slidesToScroll={1}
