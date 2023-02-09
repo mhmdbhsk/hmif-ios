@@ -24,7 +24,7 @@ const InformationLinks = [
         Informatika. Tetap berjuang dan belajar yaa teman-teman.
       </>
     ),
-    thumbnail: '/images/Information-images/code.webp',
+    thumbnail: '/images/information-images/code.webp',
   },
   {
     id: 'matics',
@@ -32,10 +32,10 @@ const InformationLinks = [
     description:
       'Main Bareng Informatics (Matics) merupakan kegiatan untuk mewadahi mahasiswa Informatika dalam penyaluran minat di bidang olahraga, baik secara online maupun offline. Kegiatan ini bertujuan untuk memberikan fasilitas kepada mahasiswa Ilmu Komputer/ Informatika yang ingin lebih mengasah kemampuan di bidang olahraga serta untuk mengikuti kompetisi-kompetisi di dalam dan di luar Jurusan Ilmu Komputer/ Informatika. Untuk itu, mari kawan agar kita dapat meningkatkan skill dan kemampuan kita di bidang olahraga dengan mengikuti agenda matics ini.',
     thumbnail: [
-      '/images/Information-images/matics.jpeg',
-      '/images/Information-images/matics-2.jpeg',
-      '/images/Information-images/matics-3.png',
-      '/images/Information-images/matics-4.jpg',
+      '/images/information-images/matics.jpeg',
+      '/images/information-images/matics-2.jpeg',
+      '/images/information-images/matics-3.png',
+      '/images/information-images/matics-4.jpg',
     ],
   },
   {
@@ -58,8 +58,8 @@ const InformationLinks = [
       </>
     ),
     thumbnail: [
-      '/images/Information-images/bus-undip.jpg',
-      '/images/Information-images/bus-undip-2.jpg',
+      '/images/information-images/bus-undip.jpg',
+      '/images/information-images/bus-undip-2.jpg',
     ],
   },
 ];
