@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 type ParagraphProps = {
-  content: string[] | React.ReactNode[];
+  content: string[] | React.ReactNode[] | React.ReactNode | JSX.Element;
   title?: string;
   multiCol?: boolean;
   multiColWithImage?: boolean;
@@ -53,21 +53,23 @@ const Paragraph = ({
       </Text>
 
       <Grid gutter='xl'>
-        {content.map((item, index) => (
-          <Grid.Col xl={6} md={12} key={index}>
-            {typeof item !== 'string' ? (
-              item
-            ) : (
-              <Text
-                align='justify'
-                sx={{ textJustify: 'inter-character' }}
-                className={sharedClasses.regularFontResponsive}
-              >
-                {item}
-              </Text>
-            )}
-          </Grid.Col>
-        ))}
+        {multiCol
+          ? (content as []).map((item, index) => (
+              <Grid.Col xl={6} md={12} key={index}>
+                {typeof item !== 'string' ? (
+                  item
+                ) : (
+                  <Text
+                    align='justify'
+                    sx={{ textJustify: 'inter-character' }}
+                    className={sharedClasses.regularFontResponsive}
+                  >
+                    {item}
+                  </Text>
+                )}
+              </Grid.Col>
+            ))
+          : content}
       </Grid>
     </Stack>
   );
@@ -83,9 +85,9 @@ const Paragraph = ({
           sx={{ textJustify: 'inter-character' }}
           className={sharedClasses.regularFontResponsive}
         >
-          {content.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
+          {multiCol
+            ? (content as []).map((item, index) => <p key={index}>{item}</p>)
+            : content}
         </Text>
       </Box>
     </Stack>
@@ -133,9 +135,9 @@ const Paragraph = ({
             sx={{ textJustify: 'inter-word' }}
             className={sharedClasses.regularFontResponsive}
           >
-            {content.map((item, index) => (
-              <p key={index}>{item}</p>
-            ))}
+            {multiCol
+              ? (content as []).map((item, index) => <p key={index}>{item}</p>)
+              : content}
           </Text>
         </Grid.Col>
       </Grid>
