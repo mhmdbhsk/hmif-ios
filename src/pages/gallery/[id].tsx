@@ -1,16 +1,15 @@
 import { Jumbotron } from '@/components';
-import Paragraph from '@/components/Paragraph';
-import DivisionData from '@/configs/DivisionsData';
 import { NextPageWithSeo } from '@/types/next-page-with-seo';
 import { Image, Paper, Stack } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { FiArrowLeft } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import GalleryData from '@/configs/GalleryData';
 
-const Division: NextPageWithSeo = () => {
+const GalleryDetail: NextPageWithSeo = () => {
   const router = useRouter();
   const { id } = router.query;
-  const data = DivisionData.find((item) => item.id === id);
+  const data = GalleryData.find((item) => item.id === id);
 
   const containerMotion = {
     rest: { scale: 1 },
@@ -49,34 +48,32 @@ const Division: NextPageWithSeo = () => {
         <FiArrowLeft /> Kembali
       </Paper>
 
-      <Jumbotron title={data?.title} description={data?.subtitle} />
+      <Jumbotron title={data?.title} description={data?.description} />
 
       <Stack spacing={46} sx={{ marginTop: 46 }}>
-        <Image
-          radius='md'
-          src={data?.image}
-          alt={data?.title}
-          styles={{
-            caption: {
-              padding: '0 24px',
-              textAlign: 'start',
-            },
-            image: {
-              borderRadius: 64,
-            },
-          }}
-        />
-        <Paragraph
-          multiCol={false}
-          content={data?.description}
-          id='pengurus-harian'
-        />
+        {data?.image?.map((item) => (
+          <Image
+            radius='md'
+            key={item}
+            src={item}
+            alt={data?.title}
+            styles={{
+              caption: {
+                padding: '0 24px',
+                textAlign: 'start',
+              },
+              image: {
+                borderRadius: 64,
+              },
+            }}
+          />
+        ))}
       </Stack>
     </>
   );
 };
 
-Division.title = 'Divisi';
-Division.pageTitle = 'Divisi';
+GalleryDetail.title = 'Event';
+GalleryDetail.pageTitle = 'Event';
 
-export default Division;
+export default GalleryDetail;

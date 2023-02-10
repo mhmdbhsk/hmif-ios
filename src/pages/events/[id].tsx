@@ -1,13 +1,13 @@
-import { Jumbotron } from '@/components';
 import Paragraph from '@/components/Paragraph';
 import DivisionData from '@/configs/DivisionsData';
+import { Jumbotron } from '@/components';
 import { NextPageWithSeo } from '@/types/next-page-with-seo';
 import { Image, Paper, Stack } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { FiArrowLeft } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
-const Division: NextPageWithSeo = () => {
+const EventsDetail: NextPageWithSeo = () => {
   const router = useRouter();
   const { id } = router.query;
   const data = DivisionData.find((item) => item.id === id);
@@ -76,7 +76,7 @@ const Division: NextPageWithSeo = () => {
   );
 };
 
-Division.title = 'Divisi';
-Division.pageTitle = 'Divisi';
+EventsDetail.title = 'Event';
+EventsDetail.pageTitle = 'Event';
 
-export default Division;
+export default EventsDetail;

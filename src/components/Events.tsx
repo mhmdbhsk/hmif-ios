@@ -11,7 +11,7 @@ type EventsItemProps = {
   title: string;
   description: string;
   icon: string | ReactNode;
-  path: string;
+  path?: string;
   color?: string;
   isBigger?: boolean;
 };

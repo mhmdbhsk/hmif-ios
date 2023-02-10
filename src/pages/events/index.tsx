@@ -7,7 +7,7 @@ import Outline from '@/components/Outline';
 import Events from '@/components/Events';
 import EventsLinks from '@/configs/EventsLinks';
 import AgendasLinks from '@/configs/AgendasLinks';
-import GalleriesLinks from '@/configs/GalleriesLinks';
+import GalleryLinks from '@/configs/GalleryLinks';
 
 const useStyles = createStyles((theme) => ({
   titleFont: {
@@ -101,7 +101,7 @@ const EventsActivities: NextPageWithSeo = () => {
             Gallery
           </Text>
         </Stack>
-        <Events events={GalleriesLinks} />
+        <Events events={GalleryLinks} />
       </Stack>
     </>
   );

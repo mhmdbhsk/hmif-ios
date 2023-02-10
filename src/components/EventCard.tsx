@@ -11,6 +11,7 @@ import {
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
+import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
   iconWrapper: {
@@ -80,8 +81,9 @@ type DivisionCardProps = {
   title: string;
   description: string;
   icon: string | ReactNode;
-  path: string;
+  path?: string;
   color?: string;
+  isExternal?: boolean;
 };
 
 const DivisionCard = ({
@@ -90,6 +92,7 @@ const DivisionCard = ({
   icon,
   path,
   color,
+  isExternal,
 }: DivisionCardProps) => {
   const { classes } = useStyles();
   const router = useRouter();
@@ -135,9 +138,9 @@ const DivisionCard = ({
           height: '100%',
           minHeight: 256,
         }}
-        onClick={() => {
-          router.push(path);
-        }}
+        component={Link}
+        href={path ?? ''}
+        target={isExternal ? '_blank' : '_self'}
       >
         <Group sx={{ height: '100%', width: '100%' }}>
           <Stack
